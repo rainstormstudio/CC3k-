@@ -18,8 +18,8 @@
 class GameState {
 public:
     virtual void init() = 0;
-    virtual bool update(double deltaTime) = 0;
-    virtual bool render(double deltaTime) = 0;
+    virtual bool update(float deltaTime) = 0;
+    virtual bool render(float deltaTime) = 0;
 };
 
 class GameStateManager {
@@ -39,8 +39,8 @@ public:
     void addScreen(std::shared_ptr<GameState> screen);
     void popScreen();
     void clearScreens();
-    bool update(double deltaTime);
-    bool render(double deltaTime);
+    bool update(float deltaTime);
+    bool render(float deltaTime);
 };
 
 #endif

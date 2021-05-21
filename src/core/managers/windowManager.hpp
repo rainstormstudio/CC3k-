@@ -13,11 +13,13 @@
 
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include <string>
 
 class WindowManager {
 private:
     std::unique_ptr<sf::RenderWindow> _window;
     sf::Event _event;
+    sf::Clock _clock;
 
     WindowManager() {}
 public:
@@ -34,9 +36,13 @@ public:
     bool pollEvent();
     sf::Event& getEvent();
 
+    float getDeltaTime();
+
     void init();
     void clear();
     void render();
+
+    void write(std::string content);
 
     void closeWindow();
 };

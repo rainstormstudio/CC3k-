@@ -17,14 +17,14 @@ void GameStateManager::clearScreens() {
     }
 }
 
-bool GameStateManager::update(double deltaTime) {
+bool GameStateManager::update(float deltaTime) {
     if (_screens.size() > 0) {
         return _screens.top()->update(deltaTime);
     }
     return false;
 }
 
-bool GameStateManager::render(double deltaTime) {
+bool GameStateManager::render(float deltaTime) {
     if (_screens.size() > 0) {
         return _screens.top()->render(deltaTime);
     }

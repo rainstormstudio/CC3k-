@@ -21,8 +21,8 @@ private:
 
 public:
     void init() override;
-    bool update(double deltaTime) override;
-    bool render(double deltaTime) override;
+    bool update(float deltaTime) override;
+    bool render(float deltaTime) override;
 };
 
 #endif
