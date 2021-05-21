@@ -14,8 +14,8 @@
 #include <cstdint>
 #include <bitset>
 
-using Component = std::uint8_t;
-const Component MAX_COMPONENTS = 64;
+using ComponentType = std::uint8_t;
+const ComponentType MAX_COMPONENTS = 64;
 
 // component signatures of systems
 using Signature = std::bitset<MAX_COMPONENTS>;

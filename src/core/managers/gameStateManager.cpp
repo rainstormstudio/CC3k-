@@ -1,6 +1,6 @@
 #include "gameStateManager.hpp"
 
-void GameStateManager::addScreen(std::unique_ptr<GameState> screen) {
+void GameStateManager::addScreen(std::shared_ptr<GameState> screen) {
     _screens.push(screen);
     _screens.top()->init();
 }

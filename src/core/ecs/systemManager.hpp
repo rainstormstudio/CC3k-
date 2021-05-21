@@ -20,8 +20,8 @@
 
 class SystemManager {
 private:
-    std::unordered_map<const char*, Signature> signatures{};
-    std::unordered_map<const char*, std::shared_ptr<System>> systems{};
+    std::unordered_map<const char*, Signature> _signatures{};
+    std::unordered_map<const char*, std::shared_ptr<System>> _systems{};
 
 public:
     /**
@@ -35,7 +35,7 @@ public:
     std::shared_ptr<T> registerSystem() {
         const char* type = typeid(T).name();
         auto system = std::make_shared<T>();
-        systems.insert({type, system});
+        _systems.insert({type, system});
         return system;
     }
 
@@ -49,7 +49,7 @@ public:
     template<typename T>
     void setSignature(Signature signature) {
         const char* type = typeid(T).name();
-        signatures.insert({type, signature});
+        _signatures.insert({type, signature});
     }
 
     /**
@@ -58,9 +58,9 @@ public:
      * @param entity 
      */
     void entityDestroyed(Entity entity) {
-        for (auto const& pair : systems) {
+        for (auto const& pair : _systems) {
             auto const& system = pair.second;
-            system->entities.erase(entity);
+            system->_entities.erase(entity);
         }
     }
 
@@ -71,14 +71,14 @@ public:
      * @param signature entity's signature
      */
     void entitySignatureChanged(Entity entity, Signature signature) {
-        for (auto const& pair : systems) {
+        for (auto const& pair : _systems) {
             auto const& type = pair.first;
             auto const& system = pair.second;
-            auto const& systemSignature = signatures[type];
+            auto const& systemSignature = _signatures[type];
             if ((signature & systemSignature) == systemSignature) {
-                system->entities.insert(entity);
+                system->_entities.insert(entity);
             } else {
-                system->entities.erase(entity);
+                system->_entities.erase(entity);
             }
         }
     }

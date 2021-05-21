@@ -17,16 +17,16 @@
 
 class GameState {
 public:
-    virtual void init();
-    virtual bool update(double deltaTime);
-    virtual bool render(double deltaTime);
+    virtual void init() = 0;
+    virtual bool update(double deltaTime) = 0;
+    virtual bool render(double deltaTime) = 0;
 };
 
 class GameStateManager {
 private:
-    std::stack<std::unique_ptr<GameState>> _screens;
+    std::stack<std::shared_ptr<GameState>> _screens;
 
-    GameStateManager();
+    GameStateManager() {}
 public:
     GameStateManager(GameStateManager const&) = delete;
     void operator=(GameStateManager const&) = delete;
@@ -36,7 +36,7 @@ public:
         return instance;
     }
 
-    void addScreen(std::unique_ptr<GameState> screen);
+    void addScreen(std::shared_ptr<GameState> screen);
     void popScreen();
     void clearScreens();
     bool update(double deltaTime);

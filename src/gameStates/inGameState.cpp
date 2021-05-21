@@ -6,9 +6,9 @@ void InGameState::init() {
 }
 
 bool InGameState::update(double deltaTime) {
-    return false;
+    return true;
 }
 
 bool InGameState::render(double deltaTime) {
-    return false;
+    return true;
 }
