@@ -1,10 +1,11 @@
 #include "assetsManager.hpp"
+#include "configsManager.hpp"
 
 bool AssetsManager::init() {
-    if (!_mainFont.loadFromFile("./assets/fonts/FreeMono.otf")) {
+    if (!_mainFont.loadFromFile(ConfigsManager::getInstance().mainFontPath())) {
         return false;
     }
-    if (!_titleTexture.loadFromFile("./assets/images/title_screen.png")) {
+    if (!_titleTexture.loadFromFile(ConfigsManager::getInstance().titleImagePath())) {
         return false;
     }
     return true;

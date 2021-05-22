@@ -1,5 +1,8 @@
 #include "windowManager.hpp"
+#include "configsManager.hpp"
 #include "assetsManager.hpp"
+
+#include "../types.hpp"
 
 bool WindowManager::isWindowOpen() {
     return _window->isOpen();
@@ -27,15 +30,20 @@ sf::View WindowManager::defaultView() const {
     return _window->getDefaultView();
 }
 
-void WindowManager::init() {
+bool WindowManager::init() {
     // TODO: get configures 
     _window = std::make_unique<sf::RenderWindow>(
-        sf::VideoMode(800, 600),
+        sf::VideoMode(
+            ConfigsManager::getInstance().screenWidth(), 
+            ConfigsManager::getInstance().screenHeight()),
         "CC3k+",
         sf::Style::Titlebar | sf::Style::Close
     );
     //_window->setFramerateLimit(60);
-    _window->setVerticalSyncEnabled(true);
+    _window->setVerticalSyncEnabled(ConfigsManager::getInstance().verticalSync());
+    _window->setPosition(Vec2i(0.0f, 0.0f));
+
+    return true;
 }
 
 void WindowManager::clear() {
@@ -54,13 +62,13 @@ void WindowManager::draw(sf::Texture texture, float x, float y, float scale) {
     _window->draw(sprite);
 }
 
-void WindowManager::write(std::string content, float x, float y) {
+void WindowManager::write(std::string content, float x, float y, sf::Color color, unsigned int fontSize) {
     sf::Text text;
     text.setFont(AssetsManager::getInstance().mainFont());
     text.setString(content);
-    text.setCharacterSize(16);
+    text.setCharacterSize(fontSize);
     text.setPosition(x, y);
-    text.setFillColor(sf::Color::White);
+    text.setFillColor(color);
     _window->draw(text);
 }
 

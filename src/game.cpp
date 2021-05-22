@@ -1,14 +1,24 @@
 #include "game.hpp"
-#include "./core/managers/gameStateManager.hpp"
+#include "./core/managers/configsManager.hpp"
 #include "./core/managers/assetsManager.hpp"
 #include "./core/managers/windowManager.hpp"
+#include "./core/managers/keyboardManager.hpp"
+#include "./core/managers/gameStateManager.hpp"
 #include "./gameStates/titleState.hpp"
 
 bool Game::init() {
+    if (!ConfigsManager::getInstance().init("./configs/gameSettings.cfg")) {
+        return false;
+    }
     if (!AssetsManager::getInstance().init()) {
         return false;
     }
-    WindowManager::getInstance().init();
+    if (!WindowManager::getInstance().init()) {
+        return false;
+    }
+    if (!KeyboardManager::getInstance().init()) {
+        return false;
+    }
     return true;
 }
 

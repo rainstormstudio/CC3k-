@@ -41,12 +41,12 @@ public:
     void setView(sf::View view);
     sf::View defaultView() const;
 
-    void init();
+    bool init();
     void clear();
     void render();
 
     void draw(sf::Texture texture, float x = 0.0f, float y = 0.0f, float scale = 1.0f);
-    void write(std::string content, float x = 0.0f, float y = 0.0f);
+    void write(std::string content, float x = 0.0f, float y = 0.0f, sf::Color color = sf::Color::White, unsigned int fontSize = 18);
 
     void closeWindow();
 };

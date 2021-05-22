@@ -3,6 +3,7 @@
 #include <string>
 
 #include "../core/managers/windowManager.hpp"
+#include "../core/managers/configsManager.hpp"
 #include "../core/ecs/ecs.hpp"
 #include "../components/transform.hpp"
 #include "../components/camera.hpp"
@@ -45,7 +46,9 @@ void RenderSystem::update(float deltaTime) {
     WindowManager::getInstance().setView(
         WindowManager::getInstance().defaultView()
     );
-    WindowManager::getInstance().write("FPS: " + std::to_string(1.0f / deltaTime));
+    if (ConfigsManager::getInstance().showFPS()) {
+        WindowManager::getInstance().write("FPS: " + std::to_string(1.0f / deltaTime));
+    }
     
     WindowManager::getInstance().render();
 }
