@@ -14,7 +14,7 @@ void TitleState::init() {
 
 bool TitleState::update(float deltaTime) {
     static float t = 0.0f;
-    t += deltaTime;
+    t += deltaTime * 0.1f;
     if (t > 2 * 3.1415926f) {
         t = 0.0f;
     }
@@ -46,7 +46,18 @@ bool TitleState::update(float deltaTime) {
     WindowManager::getInstance().write("(" + ConfigsManager::getInstance().authorEmail() + ")", infoPos.x, infoPos.y + 40.0f, infoColor);
     WindowManager::getInstance().write(ConfigsManager::getInstance().copyRight(), infoPos.x, infoPos.y + 60.0f, infoColor);
 
-    WindowManager::getInstance().write("PRESS ENTER", 344.0f, 340.0f, sf::Color::White, 24);
+    sf::Color alertColor;
+    static float alertTime = 0.0f;
+    alertTime += deltaTime;
+    if (alertTime > 1.0f) {
+        alertTime = 0.0f;
+    }
+    if (alertTime >= 0.5f) {
+        alertColor = sf::Color(100, 100, 100);
+    } else {
+        alertColor = sf::Color::White;
+    }
+    WindowManager::getInstance().write("PRESS ENTER", 344.0f, 340.0f, alertColor, 24);
 
     WindowManager::getInstance().render();
     return true;
