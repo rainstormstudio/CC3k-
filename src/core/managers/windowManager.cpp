@@ -19,6 +19,14 @@ float WindowManager::getDeltaTime() {
     return time.asSeconds();
 }
 
+void WindowManager::setView(sf::View view) {
+    _window->setView(view);
+}
+
+sf::View WindowManager::defaultView() const {
+    return _window->getDefaultView();
+}
+
 void WindowManager::init() {
     // TODO: get configures 
     _window = std::make_unique<sf::RenderWindow>(
@@ -38,12 +46,12 @@ void WindowManager::render() {
     _window->display();
 }
 
-void WindowManager::write(std::string content) {
+void WindowManager::write(std::string content, float x, float y) {
     sf::Text text;
     text.setFont(AssetsManager::getInstance().mainFont());
     text.setString(content);
-    text.setCharacterSize(24);
-    text.setPosition(10.0f, 0.0f);
+    text.setCharacterSize(16);
+    text.setPosition(x, y);
     text.setFillColor(sf::Color::White);
     _window->draw(text);
 }

@@ -19,7 +19,6 @@ class GameState {
 public:
     virtual void init() = 0;
     virtual bool update(float deltaTime) = 0;
-    virtual bool render(float deltaTime) = 0;
 };
 
 class GameStateManager {
@@ -40,7 +39,6 @@ public:
     void popScreen();
     void clearScreens();
     bool update(float deltaTime);
-    bool render(float deltaTime);
 };
 
 #endif

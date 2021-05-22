@@ -38,11 +38,14 @@ public:
 
     float getDeltaTime();
 
+    void setView(sf::View view);
+    sf::View defaultView() const;
+
     void init();
     void clear();
     void render();
 
-    void write(std::string content);
+    void write(std::string content, float x = 0.0f, float y = 0.0f);
 
     void closeWindow();
 };

@@ -23,10 +23,3 @@ bool GameStateManager::update(float deltaTime) {
     }
     return false;
 }
-
-bool GameStateManager::render(float deltaTime) {
-    if (_screens.size() > 0) {
-        return _screens.top()->render(deltaTime);
-    }
-    return false;
-}

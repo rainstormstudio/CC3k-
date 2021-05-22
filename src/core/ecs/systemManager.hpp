@@ -32,7 +32,7 @@ public:
      * @return std::shared_ptr<T> 
      */
     template<typename T>
-    std::shared_ptr<T> registerSystem() {
+    std::shared_ptr<T> add() {
         const char* type = typeid(T).name();
         auto system = std::make_shared<T>();
         _systems.insert({type, system});

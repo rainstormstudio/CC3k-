@@ -29,11 +29,5 @@ void Game::run() {
         if (!GameStateManager::getInstance().update(deltaTime)) {
             _looping = false;
         }
-
-        WindowManager::getInstance().clear();
-        if (!GameStateManager::getInstance().render(deltaTime)) {
-            _looping = false;
-        }
-        WindowManager::getInstance().render();
     }
 }

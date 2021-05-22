@@ -25,7 +25,17 @@ private:
     std::unique_ptr<EntityManager> _entityManager;
     std::unique_ptr<SystemManager> _systemManager;
 
+    Ecs() {}
+
 public:
+    Ecs(Ecs const&) = delete;
+    void operator=(Ecs const&) = delete;
+
+    static Ecs& getInstance() {
+        static Ecs instance;
+        return instance;
+    }
+
     /**
      * @brief initialize the ECS
      * 
@@ -81,7 +91,7 @@ public:
     void addComponent(Entity entity, T component) {
         _componentManager->addComponent<T>(entity, component);
         auto signature = _entityManager->getSignature(entity);
-        signature.set(_componentManager->getComponent<T>(), true);
+        signature.set(_componentManager->getComponentType<T>(), true);
         _entityManager->setSignature(entity, signature);
         _systemManager->entitySignatureChanged(entity, signature);
     }
@@ -96,7 +106,7 @@ public:
     void removeComponent(Entity entity) {
         _componentManager->removeComponent<T>(entity);
         auto signature = _entityManager->getSignature(entity);
-        signature.set(_componentManager->getComponent<T>(), false);
+        signature.set(_componentManager->getComponentType<T>(), false);
         _entityManager->setSignature(entity, signature);
         _systemManager->entitySignatureChanged(entity, signature);
     }
@@ -133,8 +143,8 @@ public:
      * @return std::shared_ptr<T> 
      */
     template<typename T>
-    std::shared_ptr<T> registerSystem() {
-        return _systemManager->registerSystem<T>();
+    std::shared_ptr<T> addSystem() {
+        return _systemManager->add<T>();
     }
 
     /**

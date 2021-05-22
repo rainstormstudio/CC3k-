@@ -12,17 +12,18 @@
 #ifndef INGAMESTATE_HPP
 #define INGAMESTATE_HPP
 
+#include <memory>
+
 #include "../core/managers/gameStateManager.hpp"
-#include "../core/ecs/ecs.hpp"
+
+#include "../systems/renderSystem.hpp"
 
 class InGameState : public GameState {
 private:
-    Ecs _world;
-
+    std::shared_ptr<RenderSystem> _renderSystem;
 public:
     void init() override;
     bool update(float deltaTime) override;
-    bool render(float deltaTime) override;
 };
 
 #endif
