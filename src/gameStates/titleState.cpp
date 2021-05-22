@@ -6,15 +6,33 @@
 #include "../core/types.hpp"
 #include "../gameStates/inGameState.hpp"
 
+#include <iostream>
+
 void TitleState::init() {
 
 }
 
 bool TitleState::update(float deltaTime) {
+    static float t = 0.0f;
+    t += deltaTime;
+    if (t > 2 * 3.1415926f) {
+        t = 0.0f;
+    }
+    AssetsManager::getInstance().titleShader().setUniform("t", t);
+    AssetsManager::getInstance().titleShader().setUniform("screenWidth", ConfigsManager::getInstance().screenWidth());
+    AssetsManager::getInstance().titleShader().setUniform("screenHeight", ConfigsManager::getInstance().screenHeight());
+
     WindowManager::getInstance().clear();
     if (KeyboardManager::getInstance().keyPressed(sf::Keyboard::Return)) {
         GameStateManager::getInstance().addScreen(std::make_shared<InGameState>());
     }
+    WindowManager::getInstance().sDraw(
+        AssetsManager::getInstance().whiteTexture(),
+        AssetsManager::getInstance().titleShader(),
+        0.0f,
+        0.0f,
+        2.0f
+    );
     WindowManager::getInstance().draw(
         AssetsManager::getInstance().titleTexture(),
         0.0f,

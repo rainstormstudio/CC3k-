@@ -10,7 +10,10 @@ bool ConfigsManager::init(std::string configFile) {
     _screenWidth = 800;
     _screenHeight = 600;
     _mainFontPath = "./assets/fonts/disposabledroid-bb.regular.ttf";
+    _whiteTexturePath = "./assets/images/white_screen.png";
     _titleImagePath = "./assets/images/title_screen.png";
+    _titleVShaderPath = "./assets/shaders/titleBG.vert";
+    _titleFShaderPath = "./assets/shaders/titleBG.frag";
     _verticalSync = true;
     _showFPS = false;
 
@@ -50,12 +53,18 @@ bool ConfigsManager::init(std::string configFile) {
                 _screenHeight = std::stoi(value);
             } else if (tag == "MAIN_FONT") {
                 _mainFontPath = value;
+            } else if (tag == "WHITE_TEXTURE") {
+                _whiteTexturePath = value;
             } else if (tag == "TITLE_IMAGE") {
                 _titleImagePath = value;
             } else if (tag == "VERTICAL_SYNC") {
                 _verticalSync = Utilities::toBool(value);
             } else if (tag == "SHOW_FPS") {
                 _showFPS = Utilities::toBool(value);
+            } else if (tag == "TITLE_VSHADER") {
+                _titleVShaderPath = value;
+            } else if (tag == "TITLE_FSHADER") {
+                _titleFShaderPath = value;
             }
         }
     } else {

@@ -26,7 +26,11 @@ private:
 
     std::string _mainFontPath;
 
+    std::string _whiteTexturePath;
     std::string _titleImagePath;
+
+    std::string _titleVShaderPath;
+    std::string _titleFShaderPath;
 
     bool _verticalSync;
 
@@ -73,8 +77,20 @@ public:
         return _mainFontPath;
     }
 
+    std::string whiteTexturePath() const {
+        return _whiteTexturePath;
+    }
+
     std::string titleImagePath() const {
         return _titleImagePath;
+    }
+
+    std::string titleVShaderPath() const {
+        return _titleVShaderPath;
+    }
+
+    std::string titleFShaderPath() const {
+        return _titleFShaderPath;
     }
 
     bool verticalSync() const {

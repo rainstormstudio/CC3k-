@@ -1,6 +1,7 @@
 #include "windowManager.hpp"
 #include "configsManager.hpp"
 #include "assetsManager.hpp"
+#include <iostream>
 
 #include "../types.hpp"
 
@@ -31,7 +32,10 @@ sf::View WindowManager::defaultView() const {
 }
 
 bool WindowManager::init() {
-    // TODO: get configures 
+    if (!sf::Shader::isAvailable()) {
+        std::cerr << "Shaders are not available in this machine." << std::endl;
+        return false;
+    }
     _window = std::make_unique<sf::RenderWindow>(
         sf::VideoMode(
             ConfigsManager::getInstance().screenWidth(), 
@@ -60,6 +64,14 @@ void WindowManager::draw(sf::Texture texture, float x, float y, float scale) {
     sprite.setPosition(x, y);
     sprite.setScale(scale, scale);
     _window->draw(sprite);
+}
+
+void WindowManager::sDraw(sf::Texture texture, const sf::Shader& shader, float x, float y, float scale) {
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
+    sprite.setPosition(x, y);
+    sprite.setScale(scale, scale);
+    _window->draw(sprite, &shader);
 }
 
 void WindowManager::write(std::string content, float x, float y, sf::Color color, unsigned int fontSize) {
