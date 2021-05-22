@@ -46,6 +46,14 @@ void WindowManager::render() {
     _window->display();
 }
 
+void WindowManager::draw(sf::Texture texture, float x, float y, float scale) {
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
+    sprite.setPosition(x, y);
+    sprite.setScale(scale, scale);
+    _window->draw(sprite);
+}
+
 void WindowManager::write(std::string content, float x, float y) {
     sf::Text text;
     text.setFont(AssetsManager::getInstance().mainFont());

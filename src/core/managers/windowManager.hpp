@@ -45,6 +45,7 @@ public:
     void clear();
     void render();
 
+    void draw(sf::Texture texture, float x = 0.0f, float y = 0.0f, float scale = 1.0f);
     void write(std::string content, float x = 0.0f, float y = 0.0f);
 
     void closeWindow();

@@ -2,7 +2,7 @@
 #include "./core/managers/gameStateManager.hpp"
 #include "./core/managers/assetsManager.hpp"
 #include "./core/managers/windowManager.hpp"
-#include "./gameStates/inGameState.hpp"
+#include "./gameStates/titleState.hpp"
 
 bool Game::init() {
     if (!AssetsManager::getInstance().init()) {
@@ -13,7 +13,7 @@ bool Game::init() {
 }
 
 void Game::run() {
-    GameStateManager::getInstance().addScreen(std::make_shared<InGameState>());
+    GameStateManager::getInstance().addScreen(std::make_shared<TitleState>());
 
     _looping = true;
     while (WindowManager::getInstance().isWindowOpen() && _looping) {

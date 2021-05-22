@@ -16,6 +16,7 @@
 class AssetsManager {
 private:
     sf::Font _mainFont;
+    sf::Texture _titleTexture;
 
     AssetsManager() {}
 
@@ -31,6 +32,7 @@ public:
     bool init();
 
     sf::Font& mainFont();
+    sf::Texture& titleTexture();
 };
 
 #endif
