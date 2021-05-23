@@ -16,6 +16,7 @@
 class AssetsManager {
 private:
     sf::Font _mainFont;
+    sf::Font _monoFont;
     sf::Texture _whiteTexture;
     sf::Texture _titleTexture;
 
@@ -35,6 +36,7 @@ public:
     bool init();
 
     sf::Font& mainFont();
+    sf::Font& monoFont();
     sf::Texture& whiteTexture();
     sf::Texture& titleTexture();
     sf::Shader& titleShader();

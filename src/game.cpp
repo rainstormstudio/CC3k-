@@ -5,6 +5,8 @@
 #include "./core/managers/keyboardManager.hpp"
 #include "./core/managers/gameStateManager.hpp"
 #include "./gameStates/titleState.hpp"
+#include "./utilities/utilities.hpp"
+#include <iostream>
 
 bool Game::init() {
     if (!ConfigsManager::getInstance().init("./configs/gameSettings.cfg")) {
@@ -19,6 +21,7 @@ bool Game::init() {
     if (!KeyboardManager::getInstance().init()) {
         return false;
     }
+
     return true;
 }
 

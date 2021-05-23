@@ -84,6 +84,16 @@ void WindowManager::write(std::string content, float x, float y, sf::Color color
     _window->draw(text);
 }
 
+void WindowManager::writeF(std::string content, sf::Font& font, float x, float y, sf::Color color, unsigned int fontSize) {
+    sf::Text text;
+    text.setFont(font);
+    text.setString(content);
+    text.setCharacterSize(fontSize);
+    text.setPosition(x, y);
+    text.setFillColor(color);
+    _window->draw(text);
+}
+
 void WindowManager::closeWindow() {
     _window->close();
 }

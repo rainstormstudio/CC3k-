@@ -16,11 +16,15 @@
 
 #include "../core/managers/gameStateManager.hpp"
 
-#include "../systems/renderSystem.hpp"
+#include "../systems/cameraUpdateSystem.hpp"
+#include "../systems/floorUpdateSystem.hpp"
+#include "../systems/floorRenderSystem.hpp"
 
 class InGameState : public GameState {
 private:
-    std::shared_ptr<RenderSystem> _renderSystem;
+    std::shared_ptr<CameraUpdateSystem> _cameraUpdateSystem;
+    std::shared_ptr<FloorUpdateSystem> _floorUpdateSystem;
+    std::shared_ptr<FloorRenderSystem> _floorRenderSystem;
 public:
     void init() override;
     bool update(float deltaTime) override;

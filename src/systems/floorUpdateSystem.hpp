@@ -1,22 +1,20 @@
 /**
- * @file renderSystem.hpp
+ * @file floorUpdateSystem.hpp
  * @author Hongyu Ding (rainstormstudio@yahoo.com)
- * @brief This file defines the rendering system
+ * @brief This file defines how to update floor system
  * @version 0.1
- * @date 2021-05-22
+ * @date 2021-05-23
  * 
  * @copyright Copyright (c) 2021
  * 
  */
-#ifndef RENDERSYSTEM_HPP
-#define RENDERSYSTEM_HPP
+#ifndef FLOORUPDATESYSTEM_HPP
+#define FLOORUPDATESYSTEM_HPP
 
 #include "../core/ecs/entity.hpp"
 #include "../core/ecs/system.hpp"
 
-class RenderSystem : public System {
-private:
-    Entity _cameraEntity;
+class FloorUpdateSystem : public System {
 public:
     void init();
     void update(float deltaTime);

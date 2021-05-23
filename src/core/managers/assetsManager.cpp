@@ -9,6 +9,11 @@ bool AssetsManager::init() {
             << ConfigsManager::getInstance().mainFontPath() << std::endl;
         return false;
     }
+    if (!_monoFont.loadFromFile(ConfigsManager::getInstance().monoFontPath())) {
+        std::cerr << "Failed to load mono font at "
+            << ConfigsManager::getInstance().monoFontPath() << std::endl;
+        return false;
+    }
     if (!_whiteTexture.loadFromFile(ConfigsManager::getInstance().whiteTexturePath())) {
         std::cerr << "Failed to load white texture at "
             << ConfigsManager::getInstance().whiteTexturePath() << std::endl;
@@ -34,6 +39,10 @@ bool AssetsManager::init() {
 
 sf::Font& AssetsManager::mainFont() {
     return _mainFont;
+}
+
+sf::Font& AssetsManager::monoFont() {
+    return _monoFont;
 }
 
 sf::Texture& AssetsManager::whiteTexture() {

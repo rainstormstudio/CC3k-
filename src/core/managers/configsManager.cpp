@@ -10,6 +10,7 @@ bool ConfigsManager::init(std::string configFile) {
     _screenWidth = 800;
     _screenHeight = 600;
     _mainFontPath = "./assets/fonts/disposabledroid-bb.regular.ttf";
+    _monoFontPath = "./assets/fonts/FreeMono.otf";
     _whiteTexturePath = "./assets/images/white_screen.png";
     _titleImagePath = "./assets/images/title_screen.png";
     _titleVShaderPath = "./assets/shaders/titleBG.vert";
@@ -53,6 +54,8 @@ bool ConfigsManager::init(std::string configFile) {
                 _screenHeight = std::stoi(value);
             } else if (tag == "MAIN_FONT") {
                 _mainFontPath = value;
+            } else if (tag == "MONO_FONT") {
+                _monoFontPath = value;
             } else if (tag == "WHITE_TEXTURE") {
                 _whiteTexturePath = value;
             } else if (tag == "TITLE_IMAGE") {

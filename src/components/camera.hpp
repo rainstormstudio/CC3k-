@@ -16,6 +16,7 @@
 
 struct Camera {
     sf::View view;
+    float moveSpeed = 10.0f;
 };
 
 #endif

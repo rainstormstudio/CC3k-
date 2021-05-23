@@ -16,27 +16,38 @@
 class ConfigsManager {
 private:
     std::string _configFilePath;
+    ConfigsManager() {}
 
+    // game infos
     std::string _version;
     const std::string _author = "DiamondSlug";
     const std::string _authorEmail = "rainstormstudio@yahoo.com";
     const std::string _copyright = "Copyright (c) 2021";
+
+    // window settings
     int _screenWidth;
     int _screenHeight;
 
+    // fonts
     std::string _mainFontPath;
+    std::string _monoFontPath;
 
+    // textures
     std::string _whiteTexturePath;
     std::string _titleImagePath;
 
+    // shaders
     std::string _titleVShaderPath;
     std::string _titleFShaderPath;
 
+    // graphics settings
     bool _verticalSync;
 
-    bool _showFPS;
+    // input settings
+    // TODO: add input configs
 
-    ConfigsManager() {}
+    // else
+    bool _showFPS;
 
 public:
     ConfigsManager(ConfigsManager const&) = delete;
@@ -75,6 +86,10 @@ public:
 
     std::string mainFontPath() const {
         return _mainFontPath;
+    }
+
+    std::string monoFontPath() const {
+        return _monoFontPath;
     }
 
     std::string whiteTexturePath() const {

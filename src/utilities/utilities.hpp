@@ -12,8 +12,24 @@
 #define UTILITIES_HPP
 
 #include <string>
+#include <random>
+#include <chrono>
+#include <algorithm>
 
 namespace Utilities {
+    static std::random_device rd; // default seed
+    static std::mt19937 gen{rd()};
+
+    inline int randInt(int min, int max) {
+        std::uniform_int_distribution<std::mt19937::result_type> r(min, max);
+        return r(gen);
+    }
+
+    inline float randf() {
+        std::uniform_real_distribution<float> r(0, 1);
+        return r(gen);
+    }
+
     inline std::string trim(std::string str) {
         const auto begin = str.find_first_not_of(' ');
         if (begin == std::string::npos) {
