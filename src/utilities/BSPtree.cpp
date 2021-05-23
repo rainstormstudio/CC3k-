@@ -86,8 +86,6 @@ void BSPTree::createHTunnel(int x1, int x2, int y) {
     for (int x = std::min(x1, x2); x < std::max(x1, x2) + 1; x ++) {
         if (_floor[y][x] == EMPTY) {
             _floor[y][x] = TUNNEL;
-        } else if (_floor[y][x] == WALL_H) {
-            _floor[y][x] = CLOSED_DOOR_H;
         } else if (_floor[y][x] == WALL_V) {
             _floor[y][x] = CLOSED_DOOR_V;
         }
@@ -100,8 +98,6 @@ void BSPTree::createVTunnel(int y1, int y2, int x) {
             _floor[y][x] = TUNNEL;
         } else if (_floor[y][x] == WALL_H) {
             _floor[y][x] = CLOSED_DOOR_H;
-        } else if (_floor[y][x] == WALL_V) {
-            _floor[y][x] = CLOSED_DOOR_V;
         }
     }
 }

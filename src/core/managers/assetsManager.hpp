@@ -19,6 +19,8 @@ private:
     sf::Font _monoFont;
     sf::Texture _whiteTexture;
     sf::Texture _titleTexture;
+    sf::Texture _floorTilesTexture;
+    sf::Sprite _floorTiles; // 16x16 tiles
 
     sf::Shader _titleShader;
 
@@ -39,6 +41,7 @@ public:
     sf::Font& monoFont();
     sf::Texture& whiteTexture();
     sf::Texture& titleTexture();
+    sf::Sprite& floorTiles();
     sf::Shader& titleShader();
 };
 

@@ -44,7 +44,7 @@ void InGameState::init() {
                 .scale = 1.0f
             }
         );
-        Ecs::getInstance().addComponent(cameraEntity,Camera{.view = sf::View(), .moveSpeed = 100.0f});
+        Ecs::getInstance().addComponent(cameraEntity,Camera{.view = sf::View(), .moveSpeed = 200.0f});
     }
     Entity map = Ecs::getInstance().addEntity(); {
         Ecs::getInstance().addComponent(map, Floor{});

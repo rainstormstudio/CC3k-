@@ -13,6 +13,7 @@ bool ConfigsManager::init(std::string configFile) {
     _monoFontPath = "./assets/fonts/FreeMono.otf";
     _whiteTexturePath = "./assets/images/white_screen.png";
     _titleImagePath = "./assets/images/title_screen.png";
+    _floorTilePath = "./assets/images/floorTiles-Sheet.png";
     _titleVShaderPath = "./assets/shaders/titleBG.vert";
     _titleFShaderPath = "./assets/shaders/titleBG.frag";
     _verticalSync = true;
@@ -60,6 +61,8 @@ bool ConfigsManager::init(std::string configFile) {
                 _whiteTexturePath = value;
             } else if (tag == "TITLE_IMAGE") {
                 _titleImagePath = value;
+            } else if (tag == "FLOOR_TILES") {
+                _floorTilePath = value;
             } else if (tag == "VERTICAL_SYNC") {
                 _verticalSync = Utilities::toBool(value);
             } else if (tag == "SHOW_FPS") {

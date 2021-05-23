@@ -46,6 +46,7 @@ public:
     void render();
 
     void draw(sf::Texture texture, float x = 0.0f, float y = 0.0f, float scale = 1.0f);
+    void drawSprite(sf::Sprite& sprite, sf::IntRect region, float x = 0.0f, float y = 0.0f, float scale = 1.0f);
     void sDraw(sf::Texture texture, const sf::Shader& shader, float x = 0.0f, float y = 0.0f, float scale = 1.0f);
     void write(std::string content, float x = 0.0f, float y = 0.0f, sf::Color color = sf::Color::White, unsigned int fontSize = 18);
     void writeF(std::string content, sf::Font& font, float x = 0.0f, float y = 0.0f, sf::Color color = sf::Color::White, unsigned int fontSize = 18);

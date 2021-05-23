@@ -21,66 +21,22 @@ void FloorRenderSystem::update(float deltaTime) {
 
     camera.view.setCenter(transform.position);
     camera.view.setRotation(transform.rotation);
-    camera.view.zoom(transform.scale);
 
     WindowManager::getInstance().setView(camera.view);
 
     for (auto& entity : _entities) {
         auto& transform = Ecs::getInstance().getComponent<Transform>(entity);
         auto& floor = Ecs::getInstance().getComponent<Floor>(entity);
-        int i = 0;
-        for (auto& row : floor.data) {
-            std::string line = "";
-            for (auto& type : row) {
-                switch (type) {
-                    case EMPTY: {
-                        line += ' ';
-                        break;
-                    }
-                    case FLOOR: {
-                        line += '.';
-                        break;
-                    }
-                    case TUNNEL: {
-                        line += '#';
-                        break;
-                    }
-                    case WALL_H: {
-                        line += '-';
-                        break;
-                    }
-                    case WALL_V: {
-                        line += '|';
-                        break;
-                    }
-                    case CLOSED_DOOR_H: {
-                        line += '=';
-                        break;
-                    }
-                    case CLOSED_DOOR_V: {
-                        line += ':';
-                        break;
-                    }
-                    case WALL_TL: {
-                        line += '1';
-                        break;
-                    }
-                    case WALL_TR: {
-                        line += '2';
-                        break;
-                    }
-                    case WALL_BL: {
-                        line += '3';
-                        break;
-                    }
-                    case WALL_BR: {
-                        line += '4';
-                        break;
-                    }
-                }
+        for (int i = 0; i < floor.data.size(); i ++) {
+            for (int j = 0; j < floor.data[i].size(); j ++) {
+                int index = static_cast<int>(floor.data[i][j]);
+                WindowManager::getInstance().drawSprite(
+                    AssetsManager::getInstance().floorTiles(),
+                    IntRect((index % 16) * 32, (index / 16) * 32, 32, 32),
+                    transform.position.x + j * 32,
+                    transform.position.y + i * 32
+                );
             }
-            WindowManager::getInstance().writeF(line, AssetsManager::getInstance().monoFont(), transform.position.x, transform.position.y + i * 20, sf::Color::White, 14);
-            i ++;
         }
     }
 

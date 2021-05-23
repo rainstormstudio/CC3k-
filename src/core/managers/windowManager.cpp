@@ -66,6 +66,13 @@ void WindowManager::draw(sf::Texture texture, float x, float y, float scale) {
     _window->draw(sprite);
 }
 
+void WindowManager::drawSprite(sf::Sprite& sprite, IntRect region, float x, float y, float scale) {
+    sprite.setTextureRect(region);
+    sprite.setPosition(x, y);
+    sprite.setScale(scale, scale);
+    _window->draw(sprite);
+}
+
 void WindowManager::sDraw(sf::Texture texture, const sf::Shader& shader, float x, float y, float scale) {
     sf::Sprite sprite;
     sprite.setTexture(texture);

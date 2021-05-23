@@ -31,7 +31,7 @@
 
 
 enum FloorType {
-    EMPTY,
+    EMPTY = 0,
     FLOOR,
     TUNNEL,
     WALL_H,

@@ -24,6 +24,12 @@ bool AssetsManager::init() {
             << ConfigsManager::getInstance().mainFontPath() << std::endl;
         return false;
     }
+    if (!_floorTilesTexture.loadFromFile(ConfigsManager::getInstance().floorTilePath())) {
+        std::cerr << "Failed to load floor titles at "
+            << ConfigsManager::getInstance().floorTilePath() << std::endl;
+        return false;
+    }
+    _floorTiles.setTexture(_floorTilesTexture);
     if (!_titleShader.loadFromFile(ConfigsManager::getInstance().titleVShaderPath(), sf::Shader::Vertex)) {
         std::cerr << "Failed to load title vertex shader at "
             << ConfigsManager::getInstance().titleVShaderPath() << std::endl;
@@ -51,6 +57,10 @@ sf::Texture& AssetsManager::whiteTexture() {
 
 sf::Texture& AssetsManager::titleTexture() {
     return _titleTexture;
+}
+
+sf::Sprite& AssetsManager::floorTiles() {
+    return _floorTiles;
 }
 
 sf::Shader& AssetsManager::titleShader() {

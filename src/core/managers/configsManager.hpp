@@ -35,6 +35,7 @@ private:
     // textures
     std::string _whiteTexturePath;
     std::string _titleImagePath;
+    std::string _floorTilePath;
 
     // shaders
     std::string _titleVShaderPath;
@@ -98,6 +99,10 @@ public:
 
     std::string titleImagePath() const {
         return _titleImagePath;
+    }
+
+    std::string floorTilePath() const {
+        return _floorTilePath;
     }
 
     std::string titleVShaderPath() const {
