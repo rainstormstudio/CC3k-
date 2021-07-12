@@ -33,58 +33,15 @@ struct Floor {
         bsp.generate(floor.data, mapWidth, mapHeight);
         floor.active = true;
 
-        {
+        {   // TODO: delete the following
             std::cout << "floor generated" << std::endl;
             int i = 0;
+            std::string asciiTile = " .#-|1234++=:";
             for (auto& row : floor.data) {
                 std::string line = "";
                 for (auto& type : row) {
-                    switch (type) {
-                        case EMPTY: {
-                            line += ' ';
-                            break;
-                        }
-                        case FLOOR: {
-                            line += '.';
-                            break;
-                        }
-                        case TUNNEL: {
-                            line += '#';
-                            break;
-                        }
-                        case WALL_H: {
-                            line += '-';
-                            break;
-                        }
-                        case WALL_V: {
-                            line += '|';
-                            break;
-                        }
-                        case CLOSED_DOOR_H: {
-                            line += '=';
-                            break;
-                        }
-                        case CLOSED_DOOR_V: {
-                            line += ':';
-                            break;
-                        }
-                        case WALL_TL: {
-                            line += '1';
-                            break;
-                        }
-                        case WALL_TR: {
-                            line += '2';
-                            break;
-                        }
-                        case WALL_BL: {
-                            line += '3';
-                            break;
-                        }
-                        case WALL_BR: {
-                            line += '4';
-                            break;
-                        }
-                    }
+                    int index = static_cast<int>(type);
+                    line += asciiTile[index];
                 }
                 std::cout << line << std::endl;
                 i ++;
